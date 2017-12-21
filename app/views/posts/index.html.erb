@@ -1,0 +1,14 @@
+<% @posts.each do |post| %>
+	<div class="card" style="width: 20rem;">
+	  <div class="card-body">
+	    <h4 class="card-title"><%= post.title %></h4>
+	    <p class="card-text"><%= post.content %></p>
+	    <a href="/posts/show/<%= post.id %>" class="btn btn-primary">보기</a>
+	    <a data-confirm="정말...지울...꺼야?" 
+		   data-method="delete" href="/posts/destroy/<%= post.id %>" 
+		   class="btn btn-primary">삭제</a>
+		<a href="/posts/edit/<%= post.id %>" class="btn btn-primary">수정</a>
+	  </div>
+	</div>
+
+<% end %>

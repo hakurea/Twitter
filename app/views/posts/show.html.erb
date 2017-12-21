@@ -1,0 +1,31 @@
+
+
+<div class="card">
+  <div class="card-header">
+    <%= @post.title %>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p><%= @post.content %></p>
+
+      <% @post.replies.each do |r| %>		
+		<div class="card">
+		  <div class="card-body">
+		    <%= r.content %>
+        <a data-confirm="정말...지울...꺼야?" 
+        data-method="delete" href="/posts/destroy_reply/<%= r.id %>" class="btn btn-primary">삭제</a>
+        <a href="/posts/edit_reply/<%= r.id %>" class="btn btn-primary">수정</a>
+		  </div>
+		</div>	  
+	  <% end %>
+
+      <footer class="blockquote-footer">
+      	<form action="/posts/create_reply/<%= @post.id %>">
+      		<input type="text" name="content">
+      		<input type="submit" value="댓글">
+      	</form>
+      </footer>
+    </blockquote>
+  </div>
+</div>
+
